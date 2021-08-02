@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<title>Buzipéntek</title>
+<style>
+    html{
+        background-color: burlywood;
+    }
+
+    #label{
+      font-weight: bold;
+      font-size: 400%;
+    }
+
+    #container{
+        background-color: rgb(139, 56, 216);
+        padding: 30px;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 50px;
+        position: absolute;
+        width: 50%;
+        top: 20%;
+        left:25%;
+        text-align: center;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+function idomeghatarozas(){
+    var uzenet;
+
+    var datum = new Date();
+    var nap = datum.getDay();
+    var ora = datum.getHours();
+    var perc=datum.getMinutes();
+    var masodperc=datum.getSeconds();
+
+    if(nap=="5"){
+    uzenet="Buzipéntek :3"
+    }   
+    else
+    {
+         if(nap<5){
+            uzenet=String((5-nap-1)*24+24-1-ora)+" óra, "+String(60-perc-1)+" perc és " +String(60-masodperc)+" másodperc van vissza buzipéntekig";
+        }
+        else{
+            uzenet=String((12-nap-1)*24+24-1-ora)+" óra, "+String(60-perc-1)+" perc és " +String(60-masodperc)+" másodperc van vissza buzipéntekig";
+        }
+    }
+    $("#label").text(uzenet);
+}
+
+$(document).ready(function(){
+    idomeghatarozas();
+});
+
+setInterval(() => {
+    idomeghatarozas();
+}, 1000);
+
+</script>
+
+</head>
+<body> <div id="container"><label id="label"> </label></div></body>
+</html>
